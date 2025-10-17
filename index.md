@@ -1,7 +1,12 @@
+---
+layout: none
+---
 <style>
   /* 전체적인 가독성을 위한 스타일 */
   body {
     line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    padding: 2em;
   }
   /* 메인 프로젝트 제목 (H3) 스타일: 그라데이션 텍스트 */
   #project-title {
@@ -14,6 +19,12 @@
     text-fill-color: transparent;
     padding-bottom: 10px;
     border-bottom: 2px solid #ddd; /* 밑줄 추가 */
+    margin-top: 0;
+  }
+  /* 제목 안의 위첨자 색상 수정 */
+  #project-title sup {
+    -webkit-text-fill-color: #0077b6; /* 그라데이션 투명 효과 무효화 */
+    color: #0077b6; /* 진한 파란색으로 지정 */
   }
   /* 섹션 제목 (H4) 스타일: 포인트 색상 */
   h4 {
