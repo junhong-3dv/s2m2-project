@@ -47,22 +47,6 @@ layout: none
     padding: 15px;
     margin: 20px 0;
   }
-  /* 코드 블록 스타일 */
-  code {
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    padding: 2px 5px;
-  }
-  pre {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-  }
-  pre code {
-    background-color: transparent;
-    padding: 0;
-  }
 </style>
 
 <h3 id="project-title">S<sup>2</sup>M<sup>2</sup>: Scalable Stereo Matching Model for Reliable Depth Estimation</h3>
@@ -77,7 +61,7 @@ layout: none
 
 <h4>Resources</h4>
 
-[[**Paper (arXiv)**]](https://arxiv.org/abs/2507.13229)] [[**Poster**]](iccv25_poster_final_v2.png)] [[**Supplementary**]](ICCV_2025_supp_camera_ready.pdf)] [[**Code**]](https://github.com/junhong-3dv/s2m2)]
+[**Paper (arXiv)**](https://arxiv.org/abs/2507.13229) | [**Poster**](iccv25_poster_final_v2.png) | [**Supplementary**](ICCV_2025_supp_camera_ready.pdf) | [**Code**](https://github.com/junhong-3dv/s2m2)
 
 ---
 
@@ -131,17 +115,3 @@ Our analysis shows a contradiction: while fine-tuning on KITTI improves error me
 
 
 *<center>Figure 5: Negative effects of fine-tuning on KITTI. Zero-shot models (FoundationStereo, S<sup>2</sup>M<sup>2</sup>) reconstruct clean 3D structures, whereas fine-tuned models (S<sup>2</sup>M<sup>2</sup>-Finetune) adapt to noise in the GT annotation, resulting in distorted geometry.</center>*
-
----
-
-<h4>Citation</h4>
-If you find this work useful for your research, please consider citing:
-
-{% raw %}
-```bibtex
-@inproceedings{min2025s2m2,
-  title={{S\textsuperscript{2}M\textsuperscript{2}}: Scalable Stereo Matching Model for Reliable Depth Estimation},
-  author={Junhong Min and Youngpil Jeon and Jimin Kim and Minyong Choi},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-  year={2025}
-}
