@@ -1,8 +1,3 @@
----
-layout: none
----
-
-
 <style>
   /* 전체적인 가독성을 위한 스타일 */
   body {
@@ -116,6 +111,8 @@ Our analysis shows a contradiction: while fine-tuning on KITTI improves error me
 
 <h4>Citation</h4>
 If you find this work useful for your research, please consider citing:
+
+{% raw %}
 ```bibtex
 @inproceedings{min2025s2m2,
   title={{S\textsuperscript{2}M\textsuperscript{2}}: Scalable Stereo Matching Model for Reliable Depth Estimation},
