@@ -7,6 +7,7 @@ layout: none
     line-height: 1.6;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     padding: 2em;
+    margin: 0;
   }
   /* 메인 프로젝트 제목 (H3) 스타일: 그라데이션 텍스트 */
   #project-title {
@@ -23,8 +24,9 @@ layout: none
   }
   /* 제목 안의 위첨자 색상 수정 */
   #project-title sup {
-    -webkit-text-fill-color: #0077b6; /* 그라데이션 투명 효과 무효화 */
-    color: #0077b6; /* 진한 파란색으로 지정 */
+    -webkit-text-fill-color: #0077b6 !important; /* 그라데이션 투명 효과 강제 무효화 */
+    color: #0077b6 !important; /* 진한 파란색으로 강제 지정 */
+    font-weight: bold; /* 굵기 유지 */
   }
   /* 섹션 제목 (H4) 스타일: 포인트 색상 */
   h4 {
