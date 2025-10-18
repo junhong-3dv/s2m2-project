@@ -56,12 +56,12 @@ layout: none
 <br>
 **International Conference on Computer Vision (ICCV) 2025**
 
-
+[Image of Teaser figure showing bicycle spoke reconstructions]
 *<center>Figure 1: Qualitative comparison of 3D point clouds. Compared to SOTA models (Selective-IGEV, FoundationStereo), our model shows more reliable reconstructions in fine structures like bicycle spokes.</center>*
 
 <h4>Resources</h4>
 
-[**Paper (arXiv)**](https://arxiv.org/abs/2507.13229) | [**Poster**](iccv25_poster_final_v2.png) | [**Supplementary**](ICCV_2025_supp_camera_ready.pdf) | [**Code**](https://github.com/junhong-3dv/s2m2)
+[**Paper**](https://arxiv.org/abs/2507.13229) | [**Supplement**](ICCV_2025_supp_camera_ready.pdf) | [**Poster**](iccv25_poster_final_v2.png) | [**Code**](https://github.com/junhong-3dv/s2m2)
 
 ---
 
@@ -75,7 +75,7 @@ layout: none
 <h4>Method</h4>
 Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the global matching paradigm by addressing its long-standing scalability challenges. To achieve this, our architecture is composed of four main stages, as illustrated in the figure below: (1) **Feature Extraction**, (2) **Global Matching**, (3) **Refinement**, and (4) **Upsampling**.
 
-
+[Image of S²M² architecture diagram]
 *<center>Figure 2: Overview of the S<sup>2</sup>M<sup>2</sup> architecture. It consists of a hierarchical feature extraction stage with a Multi-Resolution Transformer (MRT) and an Adaptive Gated Fusion Layer (AGFL), a global matching stage using Optimal Transport, and iterative refinement and upsampling stages.</center>*
 
 **Key Components:**
@@ -97,21 +97,17 @@ Our S<sup>2</sup>M<sup>2</sup>-XL model surpasses prior methods, including the s
 <h5>Qualitative Results</h5>
 The numerical superiority translates to tangible qualitative improvements. As seen below, our model faithfully reconstructs highly intricate structures where many other methods fail.
 
-
+[Image of Bicycle spokes comparison from Figure 1]
 *<center>Figure 3: Qualitative results on Middlebury v3. S<sup>2</sup>M<sup>2</sup> successfully preserves fine details like bicycle spokes without the over-smoothing effects common in other methods.</center>*
 
 <h5>Scalability Analysis</h5>
 Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
 
-
+[Image of Accuracy vs. TFLO...
+[Image of Accuracy vs. TFLOPs/Memory scatter plot]
 *<center>Figure 4: Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
 
 ---
 
 <h4>Critical Re-evaluation of the KITTI Benchmark</h4>
-We argue that the KITTI benchmark's leaderboard scores are an unreliable indicator of true generalization due to the inherent noise and systematic biases in its LiDAR-based ground truth.
-
-Our analysis shows a contradiction: while fine-tuning on KITTI improves error metrics like EPE, it simultaneously degrades photometric consistency (measured by SSIM), suggesting overfitting to dataset artifacts. The visualizations below show how fine-tuned models produce distorted structures that align with noisy GT labels rather than the actual image content.
-
-
-*<center>Figure 5: Negative effects of fine-tuning on KITTI. Zero-shot models (FoundationStereo, S<sup>2</sup>M<sup>2</sup>) reconstruct clean 3D structures, whereas fine-tuned models (S<sup>2</sup>M<sup>2</sup>-Finetune) adapt to noise in the GT annotation, resulting in distorted geometry.</center>*
+We argue that the KITTI benchmark's leaderboard scores are an unreliable indicator of true generalization due to the inherent noise and systematic biases in its LiDAR
