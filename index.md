@@ -156,21 +156,21 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/IGEV_bicycle.mp4" type="video/mp4">
+        <source src="video/Sel-IGEV_Bicycle_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Selective-IGEV</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/foundationstereo_bicycle.mp4" type="video/mp4">
+        <source src="video/foundationstereo_Bicycle_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>FoundationStereo</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_bicycle.mp4" type="video/mp4">
+        <source src="video/s2m2_Bicycle_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
