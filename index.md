@@ -212,21 +212,21 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Barrel.mp4" type="video/mp4">
+        <source src="video/s2m2_Barrel_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Barrel</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Bottles.mp4" type="video/mp4">
+        <source src="video/s2m2_Bottles_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Bottles</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Lid.mp4" type="video/mp4">
+        <source src="video/s2m2_Lid_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Lid</em></center>
