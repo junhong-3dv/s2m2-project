@@ -4,14 +4,15 @@ layout: none
 <style>
   /* 전체적인 가독성을 위한 스타일 */
   body {
-    line-height: 1.6;
+    font-size: 1.1em; /* 기본 폰트 크기 키우기 */
+    line-height: 1.7; /* 줄 간격 넓히기 */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     padding: 2em;
     margin: 0;
   }
   /* 메인 프로젝트 제목 (H3) 스타일: 그라데이션 텍스트 */
   #project-title {
-    font-size: 2.5em; /* 글자 크기 키우기 */
+    font-size: 2.8em; /* 글자 크기 더 키우기 */
     font-weight: bold;
     background: linear-gradient(45deg, #0077b6, #00bbf9, #90e0ef); /* 파란색 계열 그라데이션 */
     -webkit-background-clip: text;
@@ -28,15 +29,17 @@ layout: none
     color: #0077b6 !important; /* 진한 파란색으로 강제 지정 */
     font-weight: bold; /* 굵기 유지 */
   }
-  /* 섹션 제목 (H4) 스타일: 포인트 색상 */
+  /* 섹션 제목 (H4) 스타일: 포인트 색상 및 크기 */
   h4 {
+    font-size: 1.8em; /* 섹션 제목 크기 키우기 */
     color: #0077b6; /* 전문적인 파란색 톤 */
     border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
-    margin-top: 40px; /* 섹션 간 여백 */
+    padding-bottom: 8px;
+    margin-top: 50px; /* 섹션 간 여백 늘리기 */
   }
   /* 소제목 (H5) 스타일 */
   h5 {
+    font-size: 1.4em; /* 소제목 크기 키우기 */
     color: #333;
   }
   /* 인용문 스타일 */
@@ -52,14 +55,6 @@ layout: none
     max-width: 100%; /* 이미지가 부모 요소 너비 초과하지 않도록 */
     height: auto; /* 가로세로 비율 유지 */
     margin-top: 15px; /* 이미지 상단 여백 */
-  }
-  /* Motivation 리스트 스타일 */
-  ul {
-      list-style-type: none; /* 기본 불릿 제거 */
-      padding-left: 0;
-  }
-  li strong {
-      color: #0077b6; /* 강조 텍스트 색상 */
   }
 </style>
 
@@ -79,17 +74,17 @@ layout: none
 
 ---
 
+<h4>Abstract</h4>
+> The pursuit of a generalizable stereo matching model, capable of performing well across varying resolutions and disparity ranges without dataset-specific fine-tuning, has revealed a fundamental trade-off. Iterative local search methods achieve high scores on constrained benchmarks, but their core mechanism inherently limits the global consistency required for true generalization. However, global matching architectures, while theoretically more robust, have historically been rendered infeasible by prohibitive computational and memory costs. We resolve this dilemma with S<sup>2</sup>M<sup>2</sup>: a global matching architecture that achieves state-of-the-art accuracy and high efficiency without relying on cost volume filtering or deep refinement stacks. Our design integrates a multi-resolution transformer for robust long-range correspondence, trained with a novel loss function that concentrates probability on feasible matches. This approach enables a more robust joint estimation of disparity, occlusion, and confidence. S<sup>2</sup>M<sup>2</sup> establishes a new state of the art on Middlebury v3 and ETH3D benchmarks, significantly outperforming prior methods in most metrics while reconstructing high-quality details with competitive efficiency.
+
+---
+
 <h4>Motivation & Objective</h4>
 Prior stereo matching models struggled to generalize across diverse input conditions. Attempts to scale models often led to inefficiencies, revealing a need for a more adaptable solution. We aim to develop a unified architecture that achieves:
 <ul>
   <li><strong>Input Scalability:</strong> Robust performance across varying image resolutions and disparity ranges.</li>
   <li><strong>Model Scalability:</strong> Consistent performance gains with increased model capacity.</li>
 </ul>
-
----
-
-<h4>Abstract</h4>
-> The pursuit of a generalizable stereo matching model, capable of performing well across varying resolutions and disparity ranges without dataset-specific fine-tuning, has revealed a fundamental trade-off. Iterative local search methods achieve high scores on constrained benchmarks, but their core mechanism inherently limits the global consistency required for true generalization. However, global matching architectures, while theoretically more robust, have historically been rendered infeasible by prohibitive computational and memory costs. We resolve this dilemma with S<sup>2</sup>M<sup>2</sup>: a global matching architecture that achieves state-of-the-art accuracy and high efficiency without relying on cost volume filtering or deep refinement stacks. Our design integrates a multi-resolution transformer for robust long-range correspondence, trained with a novel loss function that concentrates probability on feasible matches. This approach enables a more robust joint estimation of disparity, occlusion, and confidence. S<sup>2</sup>M<sup>2</sup> establishes a new state of the art on Middlebury v3 and ETH3D benchmarks, significantly outperforming prior methods in most metrics while reconstructing high-quality details with competitive efficiency.
 
 ---
 
