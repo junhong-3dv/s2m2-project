@@ -146,54 +146,116 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
 
 <h4>Results</h4>
 
+<h5>Benchmark Performance</h5>
+**As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
+
+[![ETH3D Leaderboard](fig/ETH3D_learderboard.JPG)](https://www.eth3d.net/low_res_two_view)
+*<center>ETH3D low-res two-view benchmark (July 2025).</center>*
+
+[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.JPG)](https://vision.middlebury.edu/stereo/eval3/)
+*<center>Middlebury v3 benchmark (July 2025).</center>*
+
+![Real Benchmark Results](fig/real_benchmark.png)
+*<center>Comprehensive evaluation on ETH3D (Bad-0.5) and Middlebury v3 (Bad-2.0). Lower is better. Circle size indicates model parameters.</center>*
+
+<h5>Scalability Analysis</h5>
+Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
+
+![Scalability Analysis](fig/scalability.png)
+*<center>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
+
+
 <h5>3D Visualization</h5>
 
-<h6>Middlebury Benchmark Comparison</h6>
-<table class="video-table">
-  <tr>
-    <td colspan="3"><center><strong>Bicycle</strong></center></td>
-  </tr>
-  <tr>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/foundationstereo_Bicycle_encoding.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>FoundationStereo</em></center>
-    </td>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Bicycle_encoding.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
-    </td>
-  </tr>
-</table>
+[//]: # ()
+[//]: # (<h6>Middlebury Benchmark Comparison</h6>)
 
-<table class="video-table">
-  <tr>
-    <td colspan="3"><center><strong>Staircase</strong></center></td>
-  </tr>
-  <tr>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/foundationstereo_Staircase_encoding.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>FoundationStereo</em></center>
-    </td>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Staircase_encoding.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
-    </td>
-  </tr>
-</table>
+[//]: # (<table class="video-table">)
 
-<h6>Performance on Transparent/Reflective Objects (Booster Dataset)</h6>
+[//]: # (  <tr>)
+
+[//]: # (    <td colspan="3"><center><strong>Bicycle</strong></center></td>)
+
+[//]: # (  </tr>)
+
+[//]: # (  <tr>)
+
+[//]: # (    <td>)
+
+[//]: # (      <video controls autoplay loop muted playsinline>)
+
+[//]: # (        <source src="video/foundationstereo_Bicycle_encoding.mp4" type="video/mp4">)
+
+[//]: # (        Your browser does not support the video tag.)
+
+[//]: # (      </video>)
+
+[//]: # (      <center><em>FoundationStereo</em></center>)
+
+[//]: # (    </td>)
+
+[//]: # (    <td>)
+
+[//]: # (      <video controls autoplay loop muted playsinline>)
+
+[//]: # (        <source src="video/s2m2_Bicycle_encoding.mp4" type="video/mp4">)
+
+[//]: # (        Your browser does not support the video tag.)
+
+[//]: # (      </video>)
+
+[//]: # (      <center><em>S<sup>2</sup>M<sup>2</sup> &#40;Ours&#41;</em></center>)
+
+[//]: # (    </td>)
+
+[//]: # (  </tr>)
+
+[//]: # (</table>)
+
+[//]: # ()
+[//]: # (<table class="video-table">)
+
+[//]: # (  <tr>)
+
+[//]: # (    <td colspan="3"><center><strong>Staircase</strong></center></td>)
+
+[//]: # (  </tr>)
+
+[//]: # (  <tr>)
+
+[//]: # (    <td>)
+
+[//]: # (      <video controls autoplay loop muted playsinline>)
+
+[//]: # (        <source src="video/foundationstereo_Staircase_encoding.mp4" type="video/mp4">)
+
+[//]: # (        Your browser does not support the video tag.)
+
+[//]: # (      </video>)
+
+[//]: # (      <center><em>FoundationStereo</em></center>)
+
+[//]: # (    </td>)
+
+[//]: # (    <td>)
+
+[//]: # (      <video controls autoplay loop muted playsinline>)
+
+[//]: # (        <source src="video/s2m2_Staircase_encoding.mp4" type="video/mp4">)
+
+[//]: # (        Your browser does not support the video tag.)
+
+[//]: # (      </video>)
+
+[//]: # (      <center><em>S<sup>2</sup>M<sup>2</sup> &#40;Ours&#41;</em></center>)
+
+[//]: # (    </td>)
+
+[//]: # (  </tr>)
+
+[//]: # (</table>)
+
+<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h6>
 <table class="video-table">
   <tr>
     <td>
@@ -219,24 +281,6 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
     </td>
   </tr>
 </table>
-
-<h5>Benchmark Performance</h5>
-**As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
-
-[![ETH3D Leaderboard](fig/ETH3D_learderboard.JPG)](https://www.eth3d.net/low_res_two_view)
-*<center>ETH3D low-res two-view benchmark (July 2025).</center>*
-
-[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.JPG)](https://vision.middlebury.edu/stereo/eval3/)
-*<center>Middlebury v3 benchmark (July 2025).</center>*
-
-![Real Benchmark Results](fig/real_benchmark.png)
-*<center>Comprehensive evaluation on ETH3D (Bad-0.5) and Middlebury v3 (Bad-2.0). Lower is better. Circle size indicates model parameters.</center>*
-
-<h5>Scalability Analysis</h5>
-Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
-
-![Scalability Analysis](fig/scalability.png)
-*<center>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
 
 
 <h5>Our High-Resolution Synthetic Dataset</h5>
