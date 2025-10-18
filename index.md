@@ -237,10 +237,10 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
 <h5>Benchmark Performance</h5>
 S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks. **As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
 
-[![ETH3D Leaderboard](fig/ETH3D_learderboard.jpg)](https://www.eth3d.net/low_res_two_view)
+[![ETH3D Leaderboard](fig/ETH3D_learderboard.JPG)](https://www.eth3d.net/low_res_two_view)
 *<center>ETH3D low-res two-view benchmark (July 2025).</center>*
 
-[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.jpg)](https://vision.middlebury.edu/stereo/eval3/)
+[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.JPG)](https://vision.middlebury.edu/stereo/eval3/)
 *<center>Middlebury v3 benchmark (July 2025).</center>*
 
 ![Real Benchmark Results](fig/real_benchmark.png)
