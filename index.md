@@ -255,7 +255,7 @@ Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering 
 
 [//]: # (</table>)
 
-<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h6>
+<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h5>
 <table class="video-table">
   <tr>
     <td>
