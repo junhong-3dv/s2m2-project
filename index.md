@@ -56,6 +56,14 @@ layout: none
     height: auto; /* 가로세로 비율 유지 */
     margin-top: 15px; /* 이미지 상단 여백 */
   }
+  /* 리스트 스타일 */
+  ul {
+      list-style-type: disc; /* 기본 불릿 사용 */
+      padding-left: 20px; /* 들여쓰기 */
+  }
+  li strong {
+      color: #0056b3; /* 강조 텍스트 색상 (조금 더 진하게) */
+  }
   /* 비디오 테이블 스타일 */
   .video-table {
     width: 100%;
@@ -106,20 +114,33 @@ Prior stereo matching models struggled to generalize across diverse input condit
 
 ---
 
+<h4>Highlights</h4>
+Our key contributions include:
+<ul>
+  <li><strong>A Highly Scalable Global Matching Architecture:</strong> A multi-resolution Transformer architecture scalable in terms of both input (high resolutions, large disparities) and model size.</li>
+  <li><strong>Accurate and Reliable Depth Estimation:</strong> A novel loss function that boosts disparity accuracy, while the joint estimation of confidence and occlusion ensures final depth reliability.</li>
+  <li><strong>New SOTA and a Rigorous Validation Framework:</strong> State-of-the-art performance on established real-world benchmarks, and a novel synthetic dataset to validate robustness in scenarios unaddressed by existing benchmarks.</li>
+</ul>
+
+---
+
 <h4>Method</h4>
 Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the global matching paradigm by addressing its long-standing scalability challenges. To achieve this, our architecture is composed of four main stages, as illustrated in the figure below: (1) **Feature Extraction**, (2) **Global Matching**, (3) **Refinement**, and (4) **Upsampling**.
 
 ![S2M2 Architecture Overview](fig/overview.png)
 *<center>Figure 2: Overview of the S<sup>2</sup>M<sup>2</sup> architecture. It consists of a hierarchical feature extraction stage with a Multi-Resolution Transformer (MRT) and an Adaptive Gated Fusion Layer (AGFL), a global matching stage using Optimal Transport, and iterative refinement and upsampling stages.</center>*
 
-**Key Components:**
-* **Multi-Resolution Transformer (MRT):** Employs a hybrid attention strategy—horizontal 1D attention at high resolutions and 2D attention at the coarsest level—to strike a critical balance between performance and computational cost.
-* **Adaptive Gated Fusion Layer (AGFL):** Acts as a dynamic gate to selectively fuse features across different scales, ensuring a powerful and coherent multi-scale representation.
-* **Optimal Transport for Global Matching:** Establishes robust long-range correspondences by finding a globally optimal transport plan, making it robust to ambiguities like occlusions and repetitive patterns.
-* **Probabilistic Mode Concentration (PMC) Loss:** Our model is trained with a composite loss function that combines standard L1 losses with our novel PMC loss. Since global matching is performed on 1/4-downsampled features, a more direct mechanism is required to guide the matching probabilities. PMC loss directly regularizes the matching probability distribution, encouraging it to concentrate on valid disparity candidates, which boosts accuracy and enables confident predictions.
+<h5>Key Components:</h5>
+<ul>
+  <li><strong>Multi-Resolution Transformer (MRT):</strong> Employs a hybrid attention strategy—horizontal 1D attention at high resolutions and 2D attention at the coarsest level—to strike a critical balance between performance and computational cost.</li>
+  <li><strong>Adaptive Gated Fusion Layer (AGFL):</strong> Acts as a dynamic gate to selectively fuse features across different scales, ensuring a powerful and coherent multi-scale representation.</li>
+  <li><strong>Optimal Transport for Global Matching:</strong> Establishes robust long-range correspondences by finding a globally optimal transport plan, making it robust to ambiguities like occlusions and repetitive patterns.</li>
+  <li><strong>Probabilistic Mode Concentration (PMC) Loss:</strong> Our model is trained with a composite loss function that combines standard L1 losses with our novel PMC loss. Since global matching is performed on 1/4-downsampled features, a more direct mechanism is required to guide the matching probabilities. PMC loss directly regularizes the matching probability distribution, encouraging it to concentrate on valid disparity candidates, which boosts accuracy and enables confident predictions.</li>
+</ul>
 
-![PMC Loss Illustration](fig/PMC_loss_new.PNG)
-*<center>Illustration of our Probabilistic Mode Concentration (PMC) Loss.</center>*
+<center>
+  <img src="fig/PMC_loss_new.PNG" alt="PMC Loss Illustration" style="max-width: 500px;"> <em>Illustration of our Probabilistic Mode Concentration (PMC) Loss.</em>
+</center>
 
 ---
 
@@ -230,6 +251,7 @@ Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering 
 
 ![Scalability Analysis](fig/scalability.png)
 *<center>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
+
 
 <h5>Our High-Resolution Synthetic Dataset</h5>
 To rigorously test our model, we created a new high-resolution synthetic dataset using Blender. This dataset includes challenging scenarios like complex objects, reflective surfaces, and large disparity ranges, which are often not covered by existing benchmarks.
