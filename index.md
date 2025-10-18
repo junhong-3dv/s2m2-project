@@ -154,13 +154,20 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
     <td colspan="3"><center><strong>Bicycle</strong></center></td>
   </tr>
   <tr>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/Sel-IGEV_Bicycle_encoding.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>Selective-IGEV</em></center>
-    </td>
+
+[//]: # (    <td>)
+
+[//]: # (      <video controls autoplay loop muted playsinline>)
+
+[//]: # (        <source src="video/Sel-IGEV_Bicycle_encoding.mp4" type="video/mp4">)
+
+[//]: # (        Your browser does not support the video tag.)
+
+[//]: # (      </video>)
+
+[//]: # (      <center><em>Selective-IGEV</em></center>)
+
+[//]: # (    </td>)
     <td>
       <video controls autoplay loop muted playsinline>
         <source src="video/foundationstereo_Bicycle_encoding.mp4" type="video/mp4">
@@ -183,23 +190,30 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
     <td colspan="3"><center><strong>Staircase</strong></center></td>
   </tr>
   <tr>
+
+[//]: # (    <td>)
+
+[//]: # (      <video controls autoplay loop muted playsinline>)
+
+[//]: # (        <source src="video/IGEV_Staircase.mp4" type="video/mp4">)
+
+[//]: # (        Your browser does not support the video tag.)
+
+[//]: # (      </video>)
+
+[//]: # (      <center><em>Selective-IGEV</em></center>)
+
+[//]: # (    </td>)
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/IGEV_Staircase.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>Selective-IGEV</em></center>
-    </td>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/foundationstereo_Staircase.mp4" type="video/mp4">
+        <source src="video/foundationstereo_Staircase_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>FoundationStereo</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Staircase.mp4" type="video/mp4">
+        <source src="video/s2m2_Staircase_encoding.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
@@ -235,7 +249,7 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
 </table>
 
 <h5>Benchmark Performance</h5>
-S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks. **As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
+**As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
 
 [![ETH3D Leaderboard](fig/ETH3D_learderboard.JPG)](https://www.eth3d.net/low_res_two_view)
 *<center>ETH3D low-res two-view benchmark (July 2025).</center>*
