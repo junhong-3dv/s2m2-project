@@ -124,34 +124,10 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
 ---
 
 <h4>Results</h4>
-S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks. **As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
 
-[![ETH3D Leaderboard](fig/ETH3D_learderboard.jpg)](https://www.eth3d.net/low_res_two_view)
-*<center>ETH3D low-res two-view benchmark (July 2025).</center>*
+<h5>3D Visualization</h5>
 
-[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.jpg)](https://vision.middlebury.edu/stereo/eval3/)
-*<center>Middlebury v3 benchmark (July 2025).</center>*
-
-<h5>Quantitative Results & Scalability</h5>
-
-![Real Benchmark Results](fig/real_benchmark.png)
-*<center>Quantitative comparison on real-world benchmarks.</center>*
-
-![Scalability Analysis](fig/scalability.png)
-*<center>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
-
-
-<h5>Our High-Resolution Synthetic Dataset</h5>
-To rigorously test our model, we created a new high-resolution synthetic dataset using Blender. This dataset includes challenging scenarios like complex objects, reflective surfaces, and large disparity ranges, which are often not covered by existing benchmarks.
-
-![Synthetic Dataset Overview](fig/blender_dataset_overview.png)
-*<center>Overview of our high-resolution synthetic data generation using Blender.</center>*
-
----
-
-<h4>Video Results</h4>
-
-<h5>Middlebury Benchmark Comparison</h5>
+<h6>Middlebury Benchmark Comparison</h6>
 <table class="video-table">
   <tr>
     <td colspan="3"><center><strong>Bicycle</strong></center></td>
@@ -159,21 +135,21 @@ To rigorously test our model, we created a new high-resolution synthetic dataset
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="IGEV_bicycle.mp4" type="video/mp4">
+        <source src="video/IGEV_bicycle.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Selective-IGEV</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="foundationstereo_bicycle.mp4" type="video/mp4">
+        <source src="video/foundationstereo_bicycle.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>FoundationStereo</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="s2m2_bicycle.mp4" type="video/mp4">
+        <source src="video/s2m2_bicycle.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
@@ -188,21 +164,21 @@ To rigorously test our model, we created a new high-resolution synthetic dataset
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="IGEV_Staircase.mp4" type="video/mp4">
+        <source src="video/IGEV_Staircase.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Selective-IGEV</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="foundationstereo_Staircase.mp4" type="video/mp4">
+        <source src="video/foundationstereo_Staircase.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>FoundationStereo</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="s2m2_Staircase.mp4" type="video/mp4">
+        <source src="video/s2m2_Staircase.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
@@ -210,32 +186,56 @@ To rigorously test our model, we created a new high-resolution synthetic dataset
   </tr>
 </table>
 
-<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h5>
+<h6>Performance on Transparent/Reflective Objects (Booster Dataset)</h6>
 <table class="video-table">
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="s2m2_Barrel.mp4" type="video/mp4">
+        <source src="video/s2m2_Barrel.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Barrel</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="s2m2_Bottles.mp4" type="video/mp4">
+        <source src="video/s2m2_Bottles.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Bottles</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="s2m2_Lid.mp4" type="video/mp4">
+        <source src="video/s2m2_Lid.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Lid</em></center>
     </td>
   </tr>
 </table>
+
+<h5>Benchmark Performance</h5>
+S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks. **As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
+
+[![ETH3D Leaderboard](fig/ETH3D_learderboard.jpg)](https://www.eth3d.net/low_res_two_view)
+*<center>ETH3D low-res two-view benchmark (July 2025).</center>*
+
+[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.jpg)](https://vision.middlebury.edu/stereo/eval3/)
+*<center>Middlebury v3 benchmark (July 2025).</center>*
+
+![Real Benchmark Results](fig/real_benchmark.png)
+*<center>Comprehensive evaluation on ETH3D (Bad-0.5) and Middlebury v3 (Bad-2.0). Lower is better. Circle size indicates model parameters.</center>*
+
+<h5>Scalability Analysis</h5>
+Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
+
+![Scalability Analysis](fig/scalability.png)
+*<center>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
+
+<h5>Our High-Resolution Synthetic Dataset</h5>
+To rigorously test our model, we created a new high-resolution synthetic dataset using Blender. This dataset includes challenging scenarios like complex objects, reflective surfaces, and large disparity ranges, which are often not covered by existing benchmarks.
+
+![Synthetic Dataset Overview](fig/blender_dataset_overview.png)
+*<center>Overview of our high-resolution synthetic data generation using Blender.</center>*
 
 ---
 
