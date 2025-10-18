@@ -56,6 +56,24 @@ layout: none
     height: auto; /* 가로세로 비율 유지 */
     margin-top: 15px; /* 이미지 상단 여백 */
   }
+  /* 비디오 테이블 스타일 */
+  .video-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .video-table td {
+    width: 33.33%; /* 3열 테이블 */
+    padding: 5px;
+    vertical-align: top;
+    text-align: center;
+  }
+  .video-table video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd; /* 비디오 테두리 */
+  }
 </style>
 
 <h3 id="project-title">S<sup>2</sup>M<sup>2</sup>: Scalable Stereo Matching Model for Reliable Depth Estimation</h3>
@@ -128,6 +146,96 @@ To rigorously test our model, we created a new high-resolution synthetic dataset
 
 ![Synthetic Dataset Overview](fig/blender_dataset_overview.png)
 *<center>Overview of our high-resolution synthetic data generation using Blender.</center>*
+
+---
+
+<h4>Video Results</h4>
+
+<h5>Middlebury Benchmark Comparison</h5>
+<table class="video-table">
+  <tr>
+    <td colspan="3"><center><strong>Bicycle</strong></center></td>
+  </tr>
+  <tr>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="IGEV_bicycle.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Selective-IGEV</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="foundationstereo_bicycle.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>FoundationStereo</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="s2m2_bicycle.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
+    </td>
+  </tr>
+</table>
+
+<table class="video-table">
+  <tr>
+    <td colspan="3"><center><strong>Staircase</strong></center></td>
+  </tr>
+  <tr>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="IGEV_Staircase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Selective-IGEV</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="foundationstereo_Staircase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>FoundationStereo</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="s2m2_Staircase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
+    </td>
+  </tr>
+</table>
+
+<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h5>
+<table class="video-table">
+  <tr>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="s2m2_Barrel.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Barrel</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="s2m2_Bottles.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Bottles</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="s2m2_Lid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Lid</em></center>
+    </td>
+  </tr>
+</table>
 
 ---
 
