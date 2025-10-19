@@ -169,13 +169,6 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/Sel-IGEV_bicycle.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>Selective-IGEV</em></center>
-    </td>
-    <td>
-      <video controls autoplay loop muted playsinline>
         <source src="video/foundationstereo_bicycle.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -196,13 +189,6 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
     <td colspan="3"><center><strong>Staircase</strong></center></td>
   </tr>
   <tr>
-    <td>
-      <video controls autoplay loop muted playsinline>
-        <source src="video/Sel-IGEV_Staircase.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <center><em>Selective-IGEV</em></center>
-    </td>
     <td>
       <video controls autoplay loop muted playsinline>
         <source src="video/foundationstereo_Staircase.mp4" type="video/mp4">
