@@ -220,7 +220,7 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
   </tr>
 </table>
 
-<h6>Performance on Transparent/Reflective Objects (Booster Dataset)</h6>
+<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h5>
 <table class="video-table">
   <tr>
     <td>
