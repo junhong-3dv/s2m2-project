@@ -241,21 +241,21 @@ In **October 2025**, it also achieved the top rank on the [Booster benchmark](ht
 
 <div class="centered-image">
   <a href="https://www.eth3d.net/low_res_two_view">
-    <img src="fig/ETH3D_learderboard.jpg" alt="ETH3D Leaderboard">
+    <img src="fig/ETH3D_learderboard.JPG" alt="ETH3D Leaderboard">
   </a>
   <em>ETH3D low-res two-view benchmark (July 2025).</em>
 </div>
 
 <div class="centered-image">
   <a href="https://vision.middlebury.edu/stereo/eval3/">
-    <img src="fig/Middlebury_leaderboard.jpg" alt="Middlebury V3 Leaderboard">
+    <img src="fig/Middlebury_leaderboard.JPG" alt="Middlebury V3 Leaderboard">
   </a>
   <em>Middlebury v3 benchmark (July 2025).</em>
 </div>
 
 <div class="centered-image">
   <a href="https://cvlab-unibo.github.io/booster-web/">
-    <img src="fig/Booster_leaderboard.jpg" alt="Booster Leaderboard">
+    <img src="fig/Booster_leaderboard.JPG" alt="Booster Leaderboard">
   </a>
   <em>Booster benchmark (Oct 2025).</em>
 </div>
