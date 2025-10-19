@@ -161,7 +161,7 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
 
 <h5>3D Visualization</h5>
 
-<h6>Middlebury Benchmark Comparison</h6>
+<h5>Middlebury Benchmark Comparison</h5>
 <table class="video-table">
   <tr>
     <td colspan="3"><center><strong>Bicycle</strong></center></td>
