@@ -55,14 +55,23 @@ layout: none
     max-width: 100%; /* 이미지가 부모 요소 너비 초과하지 않도록 */
     height: auto; /* 가로세로 비율 유지 */
     margin-top: 15px; /* 이미지 상단 여백 */
+    display: block; /* 가운데 정렬을 위해 block 요소로 변경 */
+    margin-left: auto;
+    margin-right: auto;
   }
-  /* 리스트 스타일 */
-  ul {
-      list-style-type: disc; /* 기본 불릿 사용 */
-      padding-left: 20px; /* 들여쓰기 */
+  /* 가운데 정렬용 div 스타일 */
+  .centered-image {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
   }
-  li strong {
-      color: #0056b3; /* 강조 텍스트 색상 (조금 더 진하게) */
+  .centered-image img {
+      margin-bottom: 5px; /* 이미지와 캡션 사이 간격 */
+  }
+  .centered-image em { /* 캡션 스타일 */
+      display: block;
+      font-size: 0.9em;
+      color: #666;
   }
   /* 비디오 테이블 스타일 */
   .video-table {
@@ -91,8 +100,10 @@ layout: none
 <br>
 **International Conference on Computer Vision (ICCV) 2025**
 
-![S2M2 Teaser Image](fig/thumbnail.png)
-*<center>Figure 1: Qualitative comparison of 3D point clouds. Compared to SOTA models (Selective-IGEV, FoundationStereo), our model shows more reliable reconstructions in fine structures like bicycle spokes.</center>*
+<div class="centered-image">
+  <img src="fig/thumbnail.png" alt="S2M2 Teaser Image">
+  <em>Figure 1: Qualitative comparison of 3D point clouds. Compared to SOTA models (Selective-IGEV, FoundationStereo), our model shows more reliable reconstructions in fine structures like bicycle spokes.</em>
+</div>
 
 <h4>Resources</h4>
 
@@ -127,8 +138,10 @@ Our key contributions include:
 <h4>Method</h4>
 Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the global matching paradigm by addressing its long-standing scalability challenges. To achieve this, our architecture is composed of four main stages, as illustrated in the figure below: (1) **Feature Extraction**, (2) **Global Matching**, (3) **Refinement**, and (4) **Upsampling**.
 
-![S2M2 Architecture Overview](fig/overview.png)
-*<center>Figure 2: Overview of the S<sup>2</sup>M<sup>2</sup> architecture. It consists of a hierarchical feature extraction stage with a Multi-Resolution Transformer (MRT) and an Adaptive Gated Fusion Layer (AGFL), a global matching stage using Optimal Transport, and iterative refinement and upsampling stages.</center>*
+<div class="centered-image">
+  <img src="fig/overview.png" alt="S2M2 Architecture Overview">
+  <em>Figure 2: Overview of the S<sup>2</sup>M<sup>2</sup> architecture. It consists of a hierarchical feature extraction stage with a Multi-Resolution Transformer (MRT) and an Adaptive Gated Fusion Layer (AGFL), a global matching stage using Optimal Transport, and iterative refinement and upsampling stages.</em>
+</div>
 
 <h5>Key Components:</h5>
 <ul>
@@ -138,143 +151,95 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
   <li><strong>Probabilistic Mode Concentration (PMC) Loss:</strong> Our model is trained with a composite loss function that combines standard L1 losses with our novel PMC loss. Since global matching is performed on 1/4-downsampled features, a more direct mechanism is required to guide the matching probabilities. PMC loss directly regularizes the matching probability distribution, encouraging it to concentrate on valid disparity candidates, which boosts accuracy and enables confident predictions.</li>
 </ul>
 
-<center>
+<div class="centered-image">
   <img src="fig/PMC_loss_new.PNG" alt="PMC Loss Illustration" style="max-width: 500px;"> <em>Illustration of our Probabilistic Mode Concentration (PMC) Loss.</em>
-</center>
+</div>
 
 ---
 
 <h4>Results</h4>
 
-<h5>Benchmark Performance</h5>
-**As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
-
-[![ETH3D Leaderboard](fig/ETH3D_learderboard.JPG)](https://www.eth3d.net/low_res_two_view)
-*<center>ETH3D low-res two-view benchmark (July 2025).</center>*
-
-[![Middlebury V3 Leaderboard](fig/Middlebury_leaderboard.JPG)](https://vision.middlebury.edu/stereo/eval3/)
-*<center>Middlebury v3 benchmark (July 2025).</center>*
-
-![Real Benchmark Results](fig/real_benchmark.png)
-*<center>Comprehensive evaluation on ETH3D (Bad-0.5) and Middlebury v3 (Bad-2.0). Lower is better. Circle size indicates model parameters.</center>*
-
-<h5>Scalability Analysis</h5>
-Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
-
-![Scalability Analysis](fig/scalability.png)
-*<center>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</center>*
-
-
 <h5>3D Visualization</h5>
 
-[//]: # ()
-[//]: # (<h6>Middlebury Benchmark Comparison</h6>)
+<h6>Middlebury Benchmark Comparison</h6>
+<table class="video-table">
+  <tr>
+    <td colspan="3"><center><strong>Bicycle</strong></center></td>
+  </tr>
+  <tr>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="video/Sel-IGEV_bicycle.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Selective-IGEV</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="video/foundationstereo_bicycle.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>FoundationStereo</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="video/s2m2_bicycle.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
+    </td>
+  </tr>
+</table>
 
-[//]: # (<table class="video-table">)
+<table class="video-table">
+  <tr>
+    <td colspan="3"><center><strong>Staircase</strong></center></td>
+  </tr>
+  <tr>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="video/Sel-IGEV_Staircase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>Selective-IGEV</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="video/foundationstereo_Staircase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>FoundationStereo</em></center>
+    </td>
+    <td>
+      <video controls autoplay loop muted playsinline>
+        <source src="video/s2m2_Staircase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <center><em>S<sup>2</sup>M<sup>2</sup> (Ours)</em></center>
+    </td>
+  </tr>
+</table>
 
-[//]: # (  <tr>)
-
-[//]: # (    <td colspan="3"><center><strong>Bicycle</strong></center></td>)
-
-[//]: # (  </tr>)
-
-[//]: # (  <tr>)
-
-[//]: # (    <td>)
-
-[//]: # (      <video controls autoplay loop muted playsinline>)
-
-[//]: # (        <source src="video/foundationstereo_Bicycle_encoding.mp4" type="video/mp4">)
-
-[//]: # (        Your browser does not support the video tag.)
-
-[//]: # (      </video>)
-
-[//]: # (      <center><em>FoundationStereo</em></center>)
-
-[//]: # (    </td>)
-
-[//]: # (    <td>)
-
-[//]: # (      <video controls autoplay loop muted playsinline>)
-
-[//]: # (        <source src="video/s2m2_Bicycle_encoding.mp4" type="video/mp4">)
-
-[//]: # (        Your browser does not support the video tag.)
-
-[//]: # (      </video>)
-
-[//]: # (      <center><em>S<sup>2</sup>M<sup>2</sup> &#40;Ours&#41;</em></center>)
-
-[//]: # (    </td>)
-
-[//]: # (  </tr>)
-
-[//]: # (</table>)
-
-[//]: # ()
-[//]: # (<table class="video-table">)
-
-[//]: # (  <tr>)
-
-[//]: # (    <td colspan="3"><center><strong>Staircase</strong></center></td>)
-
-[//]: # (  </tr>)
-
-[//]: # (  <tr>)
-
-[//]: # (    <td>)
-
-[//]: # (      <video controls autoplay loop muted playsinline>)
-
-[//]: # (        <source src="video/foundationstereo_Staircase_encoding.mp4" type="video/mp4">)
-
-[//]: # (        Your browser does not support the video tag.)
-
-[//]: # (      </video>)
-
-[//]: # (      <center><em>FoundationStereo</em></center>)
-
-[//]: # (    </td>)
-
-[//]: # (    <td>)
-
-[//]: # (      <video controls autoplay loop muted playsinline>)
-
-[//]: # (        <source src="video/s2m2_Staircase_encoding.mp4" type="video/mp4">)
-
-[//]: # (        Your browser does not support the video tag.)
-
-[//]: # (      </video>)
-
-[//]: # (      <center><em>S<sup>2</sup>M<sup>2</sup> &#40;Ours&#41;</em></center>)
-
-[//]: # (    </td>)
-
-[//]: # (  </tr>)
-
-[//]: # (</table>)
-
-<h5>Performance on Transparent/Reflective Objects (Booster Dataset)</h5>
+<h6>Performance on Transparent/Reflective Objects (Booster Dataset)</h6>
 <table class="video-table">
   <tr>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Barrel_encoding.mp4" type="video/mp4">
+        <source src="video/s2m2_Barrel.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Barrel</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Bottles_encoding.mp4" type="video/mp4">
+        <source src="video/s2m2_Bottles.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Bottles</em></center>
     </td>
     <td>
       <video controls autoplay loop muted playsinline>
-        <source src="video/s2m2_Lid_encoding.mp4" type="video/mp4">
+        <source src="video/s2m2_Lid.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <center><em>Lid</em></center>
@@ -282,12 +247,52 @@ Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering 
   </tr>
 </table>
 
+<h5>Benchmark Performance</h5>
+S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks. **As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
+
+<div class="centered-image">
+  <a href="https://www.eth3d.net/low_res_two_view">
+    <img src="fig/ETH3D_learderboard.jpg" alt="ETH3D Leaderboard">
+  </a>
+  <em>ETH3D low-res two-view benchmark (July 2025).</em>
+</div>
+
+<div class="centered-image">
+  <a href="https://vision.middlebury.edu/stereo/eval3/">
+    <img src="fig/Middlebury_leaderboard.jpg" alt="Middlebury V3 Leaderboard">
+  </a>
+  <em>Middlebury v3 benchmark (July 2025).</em>
+</div>
+
+<div class="centered-image">
+  <a href="https://cvlab-unibo.github.io/booster-web/">
+    <img src="fig/Booster_leaderboard.jpg" alt="Booster Leaderboard">
+  </a>
+  <em>Booster benchmark (Oct 2025).</em>
+</div>
+
+
+<div class="centered-image">
+  <img src="fig/real_benchmark.png" alt="Real Benchmark Results">
+  <em>Comprehensive evaluation on ETH3D (Bad-0.5) and Middlebury v3 (Bad-2.0). Lower is better. Circle size indicates model parameters.</em>
+</div>
+
+<h5>Scalability Analysis</h5>
+Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
+
+<div class="centered-image">
+  <img src="fig/scalability.png" alt="Scalability Analysis">
+  <em>Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).</em>
+</div>
+
 
 <h5>Our High-Resolution Synthetic Dataset</h5>
 To rigorously test our model, we created a new high-resolution synthetic dataset using Blender. This dataset includes challenging scenarios like complex objects, reflective surfaces, and large disparity ranges, which are often not covered by existing benchmarks.
 
-![Synthetic Dataset Overview](fig/blender_dataset_overview.png)
-*<center>Overview of our high-resolution synthetic data generation using Blender.</center>*
+<div class="centered-image">
+  <img src="fig/blender_dataset_overview.png" alt="Synthetic Dataset Overview">
+  <em>Overview of our high-resolution synthetic data generation using Blender.</em>
+</div>
 
 ---
 
@@ -296,5 +301,7 @@ We argue that the KITTI benchmark's leaderboard scores are an unreliable indicat
 
 Our analysis shows a contradiction: while fine-tuning on KITTI improves error metrics like EPE, it simultaneously degrades photometric consistency (measured by SSIM), suggesting overfitting to dataset artifacts. The visualizations below show how fine-tuned models produce distorted structures that align with noisy GT labels rather than the actual image content.
 
-![KITTI Fine-tuning Comparison](fig/kitti_finetune.png)
-*<center>Figure 5: Negative effects of fine-tuning on KITTI. Zero-shot models (FoundationStereo, S<sup>2</sup>M<sup>2</sup>) reconstruct clean 3D structures, whereas fine-tuned models adapt to noise in the GT annotation, resulting in distorted geometry.</center>*
+<div class="centered-image">
+  <img src="fig/kitti_finetune.png" alt="KITTI Fine-tuning Comparison">
+  <em>Figure 5: Negative effects of fine-tuning on KITTI. Zero-shot models (FoundationStereo, S<sup>2</sup>M<sup>2</sup>) reconstruct clean 3D structures, whereas fine-tuned models adapt to noise in the GT annotation, resulting in distorted geometry.</em>
+</div>
