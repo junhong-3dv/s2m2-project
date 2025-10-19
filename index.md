@@ -234,7 +234,10 @@ Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the gl
 </table>
 
 <h5>Benchmark Performance</h5>
-S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks. **As of July 2025, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.**
+S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks.
+
+As of **July 2025**, it ranks first on both the [ETH3D](https://www.eth3d.net/low_res_two_view) and [Middlebury v3](https://vision.middlebury.edu/stereo/eval3/) leaderboards.  
+In **October 2025**, it also achieved the top rank on the [Booster benchmark](https://cvlab-unibo.github.io/booster-web/), further demonstrating its robustness across real-world scenarios.
 
 <div class="centered-image">
   <a href="https://www.eth3d.net/low_res_two_view">
