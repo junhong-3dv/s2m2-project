@@ -255,7 +255,7 @@ In **October 2025**, it also achieved the top rank on the [Booster benchmark](ht
 
 <div class="centered-image">
   <a href="https://cvlab-unibo.github.io/booster-web/">
-    <img src="fig/Booster_leaderboard.JPG" alt="Booster Leaderboard">
+    <img src="fig/Booster_leaderboard.jpg" alt="Booster Leaderboard">
   </a>
   <em>Booster benchmark (Oct 2025).</em>
 </div>
