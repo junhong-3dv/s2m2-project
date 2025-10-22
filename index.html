@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S²M²: Scalable Stereo Matching Model for Reliable Depth Estimation (ICCV 2025)</title>
+    <!-- Tailwind CSS 로드 --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) 로드 --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Inter 폰트 기본 적용 */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- 메인 컨테이너 --><div class="container mx-auto max-w-4xl px-6 py-12">
+
+        <!-- 헤더: 학회 및 제목 --><header class="text-center mb-10">
+            <p class="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                ICCV 2025
+            </p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                S<sup>2</sup>M<sup>2</sup>: Scalable Stereo Matching Model for Reliable Depth Estimation
+            </h1>
+
+            <!-- 저자 목록 --><p class="text-lg text-gray-700 dark:text-gray-300">
+                Junhong Min<sup>1</sup>, Youngpil Jeon<sup>1</sup>, Jimin Kim<sup>1</sup>, Minyong Choi<sup>1</sup>
+            </p>
+            <p class="text-md text-gray-600 dark:text-gray-400 mt-2">
+                <sup>1</sup>Samsung Electronics
+            </p>
+        </header>
+
+        <!-- 아이콘 버튼 링크 (핵심!) --><div class="flex flex-wrap justify-center gap-4 mb-12">
+            <!-- Paper 버튼 --><a href="https://arxiv.org/abs/2507.13229" target="_blank"
+               class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <!-- SVG 아이콘: Paper --><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                    <path d="M4.5 3.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM4.5 6.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM4.5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                <span>Paper</span>
+            </a>
+            <!-- Code 버튼 --><a href="https://github.com/junhong-3dv/s2m2" target="_blank"
+               class="flex items-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <!-- SVG 아이콘: GitHub --><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                <span>Code</span>
+            </a>
+            <!-- Supplement 버튼 --><a href="ICCV_2025_supp_camera_ready.pdf" target="_blank"
+               class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <!-- SVG 아이콘: File Plus --><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                </svg>
+                <span>Supplement</span>
+            </a>
+            <!-- Poster 버튼 --><a href="iccv25_poster_final_v2.png" target="_blank"
+               class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <!-- SVG 아이콘: Image --><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                </svg>
+                <span>Poster</span>
+            </a>
+        </div>
+
+        <!-- 티저 이미지 --><section class="mb-12">
+            <img src="fig/thumbnail.png"
+                 alt="S2M2 Teaser Image"
+                 class="w-full rounded-lg shadow-xl border border-gray-200 dark:border-gray-700">
+            <p class="text-center text-gray-600 dark:text-gray-400 mt-4 italic">
+                Figure 1: Qualitative comparison of 3D point clouds. Compared to SOTA models (Selective-IGEV, FoundationStereo), our model shows more reliable reconstructions in fine structures like bicycle spokes.
+            </p>
+        </section>
+
+        <!-- Abstract (논문 초록) --><section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Abstract
+            </h2>
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-inner">
+                <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                    The pursuit of a generalizable stereo matching model, capable of performing well across varying resolutions and disparity ranges without dataset-specific fine-tuning, has revealed a fundamental trade-off. Iterative local search methods achieve high scores on constrained benchmarks, but their core mechanism inherently limits the global consistency required for true generalization. However, global matching architectures, while theoretically more robust, have historically been rendered infeasible by prohibitive computational and memory costs. We resolve this dilemma with S<sup>2</sup>M<sup>2</sup>: a global matching architecture that achieves state-of-the-art accuracy and high efficiency without relying on cost volume filtering or deep refinement stacks. Our design integrates a multi-resolution transformer for robust long-range correspondence, trained with a novel loss function that concentrates probability on feasible matches. This approach enables a more robust joint estimation of disparity, occlusion, and confidence. S<sup>2</sup>M<sup>2</sup> establishes a new state of the art on Middlebury v3 and ETH3D benchmarks, significantly outperforming prior methods in most metrics while reconstructing high-quality details with competitive efficiency.
+                </p>
+            </div>
+        </section>
+
+        <!-- Motivation & Objective --><section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Motivation & Objective
+            </h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700">
+                <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-4">
+                    Prior stereo matching models struggled to generalize across diverse input conditions. Attempts to scale models often led to inefficiencies, revealing a need for a more adaptable solution. We aim to develop a unified architecture that achieves:
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-700 dark:text-gray-300">
+                    <li><strong>Input Scalability:</strong> Robust performance across varying image resolutions and disparity ranges.</li>
+                    <li><strong>Model Scalability:</strong> Consistent performance gains with increased model capacity.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Highlights --><section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Highlights
+            </h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700">
+                <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 dark:text-gray-300">
+                    <li><strong>A Highly Scalable Global Matching Architecture:</strong> A multi-resolution Transformer architecture scalable in terms of both input (high resolutions, large disparities) and model size.</li>
+                    <li><strong>Accurate and Reliable Depth Estimation:</strong> A novel loss function that boosts disparity accuracy, while the joint estimation of confidence and occlusion ensures final depth reliability.</li>
+                    <li><strong>New SOTA and a Rigorous Validation Framework:</strong> State-of-the-art performance on established real-world benchmarks, and a novel synthetic dataset to validate robustness in scenarios unaddressed by existing benchmarks.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Method --><section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Method
+            </h2>
+            <p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8">
+                Our proposed model, S<sup>2</sup>M<sup>2</sup>, is designed to revitalize the global matching paradigm by addressing its long-standing scalability challenges. To achieve this, our architecture is composed of four main stages, as illustrated in the figure below: (1) <strong>Feature Extraction</strong>, (2) <strong>Global Matching</strong>, (3) <strong>Refinement</strong>, and (4) <strong>Upsampling</strong>.
+            </p>
+            <img src="fig/overview.png" alt="S2M2 Architecture Overview" class="w-full rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 mb-4">
+            <p class="text-center text-gray-600 dark:text-gray-400 italic mb-10">
+                Figure 2: Overview of the S<sup>2</sup>M<sup>2</sup> architecture. It consists of a hierarchical feature extraction stage with a Multi-Resolution Transformer (MRT) and an Adaptive Gated Fusion Layer (AGFL), a global matching stage using Optimal Transport, and iterative refinement and upsampling stages.
+            </p>
+
+            <h3 class="text-2xl font-bold text-center mt-10 mb-6 text-gray-900 dark:text-white">Key Components</h3>
+            <ul class="list-none space-y-6 text-lg text-gray-700 dark:text-gray-300">
+                <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-inner">
+                    <strong>Multi-Resolution Transformer (MRT):</strong> Employs a hybrid attention strategy—horizontal 1D attention at high resolutions and 2D attention at the coarsest level—to strike a critical balance between performance and computational cost.
+                </li>
+                <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-inner">
+                    <strong>Adaptive Gated Fusion Layer (AGFL):</strong> Acts as a dynamic gate to selectively fuse features across different scales, ensuring a powerful and coherent multi-scale representation.
+                </li>
+                <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-inner">
+                    <strong>Optimal Transport for Global Matching:</strong> Establishes robust long-range correspondences by finding a globally optimal transport plan, making it robust to ambiguities like occlusions and repetitive patterns.
+                </li>
+                <li class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-inner">
+                    <strong>Probabilistic Mode Concentration (PMC) Loss:</strong> Our model is trained with a composite loss function that combines standard L1 losses with our novel PMC loss. Since global matching is performed on 1/4-downsampled features, a more direct mechanism is required to guide the matching probabilities. PMC loss directly regularizes the matching probability distribution, encouraging it to concentrate on valid disparity candidates, which boosts accuracy and enables confident predictions.
+                </li>
+            </ul>
+            <img src="fig/PMC_loss_new.PNG" alt="PMC Loss Illustration" class="w-full max-w-lg mx-auto rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 mt-8 mb-4">
+            <p class="text-center text-gray-600 dark:text-gray-400 italic">
+                Illustration of our Probabilistic Mode Concentration (PMC) Loss.
+            </p>
+        </section>
+
+        <!-- Results --><section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">
+                Results
+            </h2>
+
+            <!-- 3D Visualization --><h3 class="text-2xl font-bold text-center mt-10 mb-6 text-gray-900 dark:text-white">3D Visualization Comparison (Middlebury)</h3>
+
+            <!-- Bicycle 섹션 (한 줄 전체 사용) --><div class="mb-12">
+                <h4 class="text-xl font-semibold text-center mb-4">Bicycle Comparison</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8"> <!-- PC에서는 2열, 모바일에서는 1열 --><div>
+                        <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                            <source src="video/foundationstereo_bicycle.mp4" type="video/mp4">
+                        </video>
+                        <p class="text-center text-sm mt-2 italic">FoundationStereo</p>
+                    </div>
+                    <div>
+                        <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                            <source src="video/s2m2_bicycle.mp4" type="video/mp4">
+                        </video>
+                        <p class="text-center text-sm mt-2 italic">S<sup>2</sup>M<sup>2</sup> (Ours)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staircase 섹션 (한 줄 전체 사용) --><div class="mb-12">
+                <h4 class="text-xl font-semibold text-center mb-4">Staircase Comparison</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8"> <!-- PC에서는 2열, 모바일에서는 1열 --><div>
+                        <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                            <source src="video/foundationstereo_Staircase.mp4" type="video/mp4">
+                        </video>
+                        <p class="text-center text-sm mt-2 italic">FoundationStereo</p>
+                    </div>
+                    <div>
+                        <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                            <source src="video/s2m2_Staircase.mp4" type="video/mp4">
+                        </video>
+                        <p class="text-center text-sm mt-2 italic">S<sup>2</sup>M<sup>2</sup> (Ours)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booster Dataset --><h3 class="text-2xl font-bold text-center mt-16 mb-6 text-gray-900 dark:text-white">Performance on Transparent/Reflective Objects (Booster)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div>
+                    <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                        <source src="video/s2m2_Barrel.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-center text-sm mt-2 italic">Barrel</p>
+                </div>
+                <div>
+                    <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                        <source src="video/s2m2_Bottles.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-center text-sm mt-2 italic">Bottles</p>
+                </div>
+                <div>
+                    <video controls autoplay loop muted playsinline class="rounded-lg border dark:border-gray-700 shadow-md w-full">
+                        <source src="video/s2m2_Lid.mp4" type="video/mp4">
+                    </video>
+                    <p class="text-center text-sm mt-2 italic">Lid</p>
+                </div>
+            </div>
+
+            <!-- Benchmark Performance --><h3 class="text-2xl font-bold text-center mt-16 mb-6 text-gray-900 dark:text-white">Benchmark Performance</h3>
+            <p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8">
+                S<sup>2</sup>M<sup>2</sup> establishes a new state-of-the-art on diverse and challenging benchmarks.
+                As of <strong>July 2025</strong>, it ranks first on both the <a href="https://www.eth3d.net/low_res_two_view" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">ETH3D</a> and <a href="https://vision.middlebury.edu/stereo/eval3/" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Middlebury v3</a> leaderboards.
+                In <strong>October 2025</strong>, it also achieved the top rank on the <a href="https://cvlab-unibo.github.io/booster-web/" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">Booster benchmark</a>.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div>
+                    <a href="https://www.eth3d.net/low_res_two_view" target="_blank">
+                        <img src="fig/ETH3D_learderboard.JPG" alt="ETH3D Leaderboard" class="w-full rounded-lg shadow-md border border-gray-200 dark:border-gray-700 hover:opacity-80 transition-opacity">
+                    </a>
+                    <p class="text-center text-sm mt-2 italic">ETH3D low-res two-view (July 2025)</p>
+                </div>
+                <div>
+                    <a href="https://vision.middlebury.edu/stereo/eval3/" target="_blank">
+                        <img src="fig/Middlebury_leaderboard.JPG" alt="Middlebury V3 Leaderboard" class="w-full rounded-lg shadow-md border border-gray-200 dark:border-gray-700 hover:opacity-80 transition-opacity">
+                    </a>
+                    <p class="text-center text-sm mt-2 italic">Middlebury v3 (July 2025)</p>
+                </div>
+                <div>
+                    <a href="https://cvlab-unibo.github.io/booster-web/" target="_blank">
+                        <img src="fig/Booster_leaderboard.jpg" alt="Booster Leaderboard" class="w-full rounded-lg shadow-md border border-gray-200 dark:border-gray-700 hover:opacity-80 transition-opacity">
+                    </a>
+                    <p class="text-center text-sm mt-2 italic">Booster (Oct 2025)</p>
+                </div>
+            </div>
+            <img src="fig/real_benchmark.png" alt="Real Benchmark Results" class="w-full rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 mb-4">
+            <p class="text-center text-gray-600 dark:text-gray-400 italic">
+                Comprehensive evaluation on ETH3D (Bad-0.5) and Middlebury v3 (Bad-2.0). Lower is better. Circle size indicates model parameters.
+            </p>
+
+            <!-- Scalability Analysis --><h3 class="text-2xl font-bold text-center mt-16 mb-6 text-gray-900 dark:text-white">Scalability Analysis</h3>
+            <p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8">
+                Our S<sup>2</sup>M<sup>2</sup> family forms a compelling Pareto front, offering significantly better performance at every level of computational budget and validating the scalability of our architecture.
+            </p>
+            <img src="fig/scalability.png" alt="Scalability Analysis" class="w-full rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 mb-4">
+            <p class="text-center text-gray-600 dark:text-gray-400 italic">
+                Accuracy vs. Efficiency (Synthetic Benchmark). The S<sup>2</sup>M<sup>2</sup> family (red) achieves higher or comparable accuracy with significantly less computation than larger models like FoundationStereo (cyan).
+            </p>
+
+            <!-- Synthetic Dataset --><h3 class="text-2xl font-bold text-center mt-16 mb-6 text-gray-900 dark:text-white">Our High-Resolution Synthetic Dataset</h3>
+            <p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8">
+                To rigorously test our model, we created a new high-resolution synthetic dataset using Blender. This dataset includes challenging scenarios like complex objects, reflective surfaces, and large disparity ranges, which are often not covered by existing benchmarks.
+            </p>
+            <img src="fig/blender_dataset_overview.png" alt="Synthetic Dataset Overview" class="w-full rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 mb-4">
+            <p class="text-center text-gray-600 dark:text-gray-400 italic">
+                Overview of our high-resolution synthetic data generation using Blender.
+            </p>
+
+            <!-- KITTI Re-evaluation --><h3 class="text-2xl font-bold text-center mt-16 mb-6 text-gray-900 dark:text-white">Critical Re-evaluation of the KITTI Benchmark</h3>
+            <p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8">
+                We argue that the KITTI benchmark's leaderboard scores are an unreliable indicator of true generalization due to the inherent noise and systematic biases in its LiDAR-based ground truth. Our analysis shows a contradiction: while fine-tuning on KITTI improves error metrics like EPE, it simultaneously degrades photometric consistency (measured by SSIM), suggesting overfitting to dataset artifacts.
+            </p>
+            <img src="fig/kitti_finetune.png" alt="KITTI Fine-tuning Comparison" class="w-full rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 mb-4">
+            <p class="text-center text-gray-600 dark:text-gray-400 italic">
+                Figure 5: Negative effects of fine-tuning on KITTI. Zero-shot models (FoundationStereo, S<sup>2</sup>M<sup>2</sup>) reconstruct clean 3D structures, whereas fine-tuned models adapt to noise in the GT annotation, resulting in distorted geometry.
+            </p>
+        </section>
+
+        <!-- 논문 인용 (Citation) --><section>
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+                Citation
+            </h2>
+            <div class="relative bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-inner">
+                <!-- 복사 버튼 --><button onclick="copyBibtex()" title="Copy BibTeX to clipboard"
+                        class="absolute top-4 right-4 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium py-2 px-4 rounded-lg transition-all duration-200">
+                    <span id="copy-button-text">BibTeX 복사</span>
+                </button>
+
+                <!-- BibTeX 내용 --><pre class="overflow-x-auto whitespace-pre-wrap text-sm text-gray-700 dark:text-gray-300 pr-24">
+<code id="bibtex-content">@inproceedings{min2025s2m2,
+  title={{S\textsuperscript{2}M\textsuperscript{2}}: Scalable Stereo Matching Model for Reliable Depth Estimation},
+  author={Junhong Min and Youngpil Jeon and Jimin Kim and Minyong Choi},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year={2025}
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- 푸터 --><footer class="text-center text-gray-600 dark:text-gray-400 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <!-- 템플릿의 저작권 고지를 유지하는 것이 좋습니다. --><p class="mt-2">Web template inspired by the <a href="https://github.com/nerfies/nerfies.github.io" class="hover:underline" target="_blank">Nerfies</a> project.</p>
+        </footer>
+
+    </div>
+
+    <!-- BibTeX 복사 스크립트 --><script>
+        function copyBibtex() {
+            // ... (기존 스크립트와 동일)
+            const bibtexText = document.getElementById('bibtex-content').innerText;
+            const copyButtonText = document.getElementById('copy-button-text');
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(bibtexText).then(() => {
+                    copyButtonText.innerText = '복사 완료!';
+                    setTimeout(() => {
+                        copyButtonText.innerText = 'BibTeX 복사';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Clipboard API 실패:', err);
+                    fallbackCopy(bibtexText);
+                });
+            } else {
+                fallbackCopy(bibtexText);
+            }
+        }
+
+        function fallbackCopy(textToCopy) {
+            const copyButtonText = document.getElementById('copy-button-text');
+            const textArea = document.createElement('textarea');
+            textArea.value = textToCopy;
+
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            textArea.style.padding = 0;
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            textArea.style.background = 'transparent';
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    copyButtonText.innerText = '복사 완료!';
+                } else {
+                    copyButtonText.innerText = '복사 실패';
+                }
+            } catch (err) {
+                console.error('Fallback 복사 실패:', err);
+                copyButtonText.innerText = '복사 실패';
+            }
+
+            document.body.removeChild(textArea);
+            
+            setTimeout(() => {
+                copyButtonText.innerText = 'BibTeX 복사';
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
+
